@@ -3,39 +3,37 @@
         <form action="https://demo.clipbucket.com/enterprise/" method="get" id="update_demo_form">
             <nav class="swither-nav navbar navbar-expand-md navbar-dark bg-dark sidebarNavigation" data-sidebarClass="navbar-dark bg-dark">
                 <div class="container-fluid">
-                    <button class="navbar-toggler leftNavbarToggler hidden-lg hidden-md" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler leftNavbarToggler hidden-lg hidden-md" type="submit" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                        <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
                     </button>
-
                     <button class="btn update hidden-lg hidden-md" type="submit" id="update_demo">Update</button>
                     <div class="collapse navbar-collapse swither-div" id="navbarsExampleDefault">
                         <ul class="nav navbar-nav nav-flex-icons ml-auto">
-                            <li class="nav-item  shiwth-bg dropdown col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                            <div class="nav-item  shiwth-bg dropdown col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <h3>Choose Demo</h3>
-                                {$demos = $dswitch->get_demos()}
-                                <select name="demo_url" id="demo_url">
-                                    <div class="dropdown-menu menu-shwich" aria-labelledby="dropdown01">
+                                <div class="custom-select  " style="width:200px;">
+                                    {$demos = $dswitch->get_demos()}
+                                    <select name="demo_url" id="demo_url">
                                         <option class="nav-link dropdown-toggle" value="https://demo.clipbucket.com/enterprise/" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">
                                             Default
-                                            <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
                                         </option>
-                                        {if !empty($demos)}
+                                            {if !empty($demos)}
                                             {foreach from=$demos item=demo}
-                                                 <option class="dropdown-item" value="{$demo['url']}">{$demo['name']}</option>
+                                                <option class="dropdown-item" value="{$demo['url']}">{$demo['name']}
+                                                </option>
                                             {/foreach}
-                                        {/if}
-                                    </div>
-                                </select>
-                            </li>
-                            <li class="nav-item  shiwth-bg dropdown col-lg-3 col-md-4 col-sm-12 col-xs-12">
-                                <h3>Template</h3>
-                                <select name="set_the_template" id="set_the_template">
-                                    <div class="dropdown-menu menu-shwich" aria-labelledby="dropdown01">
-                                        <option class="nav-link dropdown-toggle" value="cb_28" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+                                        {/if}  
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="nav-item  shiwth-bg dropdown col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                                 <h3>Template</h3>
+                                <div class="custom-select  " style="width:200px;">
+                                    <select name="set_the_template" id="set_the_template">
+                                        <option class="nav-link dropdown-toggle" value="cb_28" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">
                                             Default
-                                            <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
                                         </option>
                                         {assign var='templates' value=$cbtpl->get_templates()}
                                         {if $templates} 
@@ -43,30 +41,29 @@
                                                 {if $template.dir == 'cb_27' || $template.dir == 'helloWorld'}
                                                     {continue}
                                                 {/if}
-                                                    <option class="dropdown-item" value="{$template.dir}">{$template.name}</option>
+                                                <option class="dropdown-item" value="{$template.dir}">{$template.name}</option>
                                             {/foreach}
-                                        {/if}
-                                    </div>
-                                </select>
-                            </li>
-                            <li class="nav-item  shiwth-bg dropdown col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                                        {/if}  
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="nav-item  shiwth-bg dropdown col-lg-3 col-md-4 col-sm-4 col-xs-12">
                                 <h3>Language</h3>
-                                <select name="set_site_lang" id="set_site_lang">
-                                    <div class="dropdown-menu menu-shwich" aria-labelledby="dropdown01">
+                                <div class="custom-select  " style="width:200px;">
+                                    <select name="set_site_lang" id="set_site_lang">
                                         <option class="nav-link dropdown-toggle" value="en" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">
                                             Default
-                                            <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
                                         </option>
                                         {assign var='langs' value=$lang_obj->get_langs()}
                                         {if $langs} 
                                             {foreach from=$langs item=lang}
-                                                <option class="dropdown-item" value="{$lang.language_code}">{$lang.language_name}</option>
+                                                <option  value="{$lang.language_code}">{$lang.language_name}</option>
                                             {/foreach}
-                                        {/if}    
-                                    </div>
-                                </select>
-                            </li>
+                                        {/if}  
+                                    </select>
+                                </div>
+                            </div>
                             <button class="btn update hidden-sm hidden-xs" type="submit" id="update_demo">Update</button>
                         </ul>
                     </div>
@@ -90,33 +87,6 @@
 {/if}
 *}
 <style>
-/*
-.demo-switcher{
-    top: 250px;
-    right: 23px !important;
-    text-indent: 0 !important;
-    font-size: 0;
-    line-height: 44px;
-    position: absolute;
-    width: 150px;
-    height: auto;
-    border-radius: 2px;
-    background: #fff;
-    border: 1px solid #ccc;
-    z-index: 100 !important;
-    right: 23px !important;
-
-}   
-.custom-yoo{
-    border-radius: 0px;
-}
-.btn-block+.btn-block{
-    margin-top: 0px;
-}
-.disp-switcher{
-    display: none;
-}
-*/
 .header-sw {
     background:#1a172f;
     float:left;
@@ -143,8 +113,8 @@
 .header-sw .swither-nav .swither-div ul.navbar-nav{
     
 }
-.header-sw .swither-nav .swither-div ul.navbar-nav .shiwth-bg{
-
+.header-sw .swither-nav .swither-div ul.navbar-nav .shiwth-bg .custom-select{
+    display:inline-block;
 }
 .header-sw .swither-nav .swither-div ul.navbar-nav .shiwth-bg h3{
     display:inline-block;
@@ -153,18 +123,26 @@
     font-weight:500;
     margin:10px 0 !important;
 }
-.header-sw .swither-nav .swither-div ul.navbar-nav .shiwth-bg .nav-link{
-    display:inline-block;
-    width:auto;
-    border-radius:25px;
-    padding:0 12px;
-    height:auto !important;
+
+.nav-link span {
     background:#302d4f !important;
-    color:#fff;
-    border:1px solid #484564;
-    box-shadow:none;
-    margin:0 8px;
 }
+
+.nav-link:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;
+}
+
+
+
+
+
 .header-sw .swither-nav .swither-div ul.navbar-nav .shiwth-bg .nav-link span{
     font-size:9px;
     margin:0 0px 0 21px;
@@ -182,15 +160,106 @@
 .menu-shwich .dropdown-item:last-child{
     border:none;
 }
+.custom-select {
+  position: relative;
+  font-family: Arial;
+}
+.custom-select select {
+  display: none; /*hide original SELECT element:*/
+}
+.select-selected {
+  background-color:#302d4f;
+  border-radius:25px;
+  border:1px solid #484564 !important;
+}
+
+
+
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+/*style the items (options), including the selected item:*/
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+  user-select: none;
+}
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: #302d4f;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+
 @media only screen and (max-width: 1024px){
-    .shiwth-bg{
-        width:30% !important;
+    .shiwth-bg h3{
+        font-size:12px !important;
+    }
+    .navbar-toggler{
+        background: #484564;
+        border: 1px solid #484564;
+        padding: 8px 12px;
+        border-radius: 2px;
+        margin: 8px 0;
+    }
+    .navbar-toggler span{
+        color: #fff;
+        font-size: 19px;
+        font-weight: 200;
+    }
+    .custom-select  {
+        width:150px !important;
     }
 
 }
 @media only screen and (max-width: 768px){
+    .custom-select{
+        float:right;
+    }
+    .navbar-nav {
+        float: none !important;
+        height: 350px !important;
+        width: 100%;
+        margin: 0 0;
+    }
+    .select-selected{
+        background:none !important;
+
+    }
+    .select-items {
+        left: -45px !important;
+        right: -3px !important;
+        width: 203px !important;
+    }
     .shiwth-bg{
         width:100% !important;
+        border-bottom:1px solid #484564;
     }
     .navbar-toggler{
         background: #484564;
@@ -204,14 +273,29 @@
         font-size: 19px;
         font-weight: 200;
     }
+
     .header-sw .swither-nav .swither-div ul.navbar-nav .shiwth-bg .nav-link{
         border:none !important;
         background:none !important;
         margin: 7px 8px !important;
         float:right;
     }
+    .navbar-collapse.collapse.in {
+        display: block !important;
+        height: 100% !important;
+    }
 }
 @media only screen and (max-width: 767px){
+    .custom-select{
+        float:right;
+    }
+    .navbar-collapse.collapse.in {
+        display: block !important;
+        height: 100% !important;
+    }
+    .header-sw {
+        height: auto !important;
+    }
     .swither-div {
         padding:0;
         margin:0;
@@ -310,19 +394,90 @@ $( ".hover-switch" ).mouseover(function() {
     $( '.disp-switcher' ).fadeIn( 500 );
 });
 */
+/*
 $( "#demo_url" ).change(function() {
   var selectedDemo = $("#demo_url option:selected").val();
   freeCheck = "/free"
 
   if(selectedDemo.indexOf(freeCheck) != -1){
     console.log(freeCheck + " found");
-    
   }
   
+  console.log(selectedDemo);
   $('#update_demo_form').attr('action', selectedDemo);
+
 });
+
 
 $( "#update_demo" ).click(function() {
   $( "#demo_url" ).prop( "disabled", true );
 });
+*/
+</script>
+
+
+<script>
+var x, i, j, selElmnt, a, b, c;
+x = document.getElementsByClassName("custom-select");
+for (i = 0; i < x.length; i++) {
+  selElmnt = x[i].getElementsByTagName("select")[0];
+  a = document.createElement("DIV");
+  a.setAttribute("class", "select-selected");
+  a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+  x[i].appendChild(a);
+  b = document.createElement("DIV");
+  b.setAttribute("class", "select-items select-hide");
+  for (j = 0; j < selElmnt.length; j++) {
+    c = document.createElement("DIV");
+    c.innerHTML = selElmnt.options[j].innerHTML;
+    c.addEventListener("click", function(e) {
+        var y, i, k, s, h;
+        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+        h = this.parentNode.previousSibling;
+        for (i = 0; i < s.length; i++) {
+          if (s.options[i].innerHTML == this.innerHTML) {
+            s.selectedIndex = i;
+            h.innerHTML = this.innerHTML;
+            y = this.parentNode.getElementsByClassName("same-as-selected");
+            for (k = 0; k < y.length; k++) {
+              y[k].removeAttribute("class");
+            }
+            // checkmate
+            var selectedDemo = $("#demo_url option:selected").val();
+            $('#update_demo_form').attr('action', selectedDemo);
+            // checkmate
+            this.setAttribute("class", "same-as-selected");
+            break;
+          }
+        }
+        h.click();
+    });
+    b.appendChild(c);
+  }
+  x[i].appendChild(b);
+  a.addEventListener("click", function(e) {
+      e.stopPropagation();
+      closeAllSelect(this);
+      this.nextSibling.classList.toggle("select-hide");
+      this.classList.toggle("select-arrow-active");
+    });
+}
+function closeAllSelect(elmnt) {
+  var x, y, i, arrNo = [];
+  x = document.getElementsByClassName("select-items");
+  y = document.getElementsByClassName("select-selected");
+  for (i = 0; i < y.length; i++) {
+    if (elmnt == y[i]) {
+      arrNo.push(i)
+    } else {
+      y[i].classList.remove("select-arrow-active");
+    }
+  }
+  for (i = 0; i < x.length; i++) {
+    if (arrNo.indexOf(i)) {
+      x[i].classList.add("select-hide");
+    }
+  }
+}
+document.addEventListener("click", closeAllSelect);
 </script>
