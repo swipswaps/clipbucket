@@ -22,7 +22,7 @@ You can start a fully dedicated video sharing website or photo sharing websites 
 
 In order for you to be able to run ClipBucket, there are certain tools that need to be installed on your server. Don't worry, they are all FREE. To have a look at complete list of required tools, click the link below.
 
-<a href="http://clip-bucket.com/cb-install-requirements/">ClipBucket Server Requiremenets </a>
+<a href="http://clip-bucket.com/cb-install-requirements/">ClipBucket Server Requirements </a>
 
 # How To Install ClipBucket
 Installation of ClipBucket is simple and straight forward. Click the link below to watch a complete ClipBucket setup guide video
